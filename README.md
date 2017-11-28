@@ -39,7 +39,7 @@ private const string CassandraContactPoint = "<FILLME>"; //  DnsName
 > **Create**: This involves creation on keyspace and  table. Also the insertion of new records in InsertQueries where we insert data into the race table. This leverages Mapper Class of C# Driver. Sample Usage with Mapper:
 ```
 // Keyspace creation
-session.Execute("CREATE KEYSPACE raceprofile WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }");
+session.Execute("CREATE KEYSPACE raceprofile WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 1 };");
 // Table creation
 session.Execute("CREATE TABLE race (race_year int, race_name text, rank int, any_accident boolean, audiance_capacity bigint, cyclist_name text, location text, shop_ip inet, transaction_id uuid, PRIMARY KEY((race_year, race_name), rank))");
 // Inserting a record
